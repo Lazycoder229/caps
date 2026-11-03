@@ -1,0 +1,474 @@
+{
+  "name": "PRIME POS role-based help dataset",
+  "version": 2,
+  "kind": "intent-classification-and-retrieval",
+  "description": "Role-specific questions and shared menu knowledge used to train PRIME's TensorFlow.js intent classifier and retrieve trusted answers.",
+  "databaseSource": "db.sql",
+  "databaseSnapshot": {
+    "categories": ["Rice", "Ulam"],
+    "menuItems": [
+      {
+        "name": "Pards",
+        "category": "Ulam",
+        "description": "Pards Litson Manok",
+        "price": 390,
+        "available": true
+      },
+      {
+        "name": "White Rice",
+        "category": "Rice",
+        "description": "Denorado Rice",
+        "price": 30,
+        "available": true
+      }
+      
+    ],
+    "recipeRows": 0
+  },
+  "roles": {
+    "admin": [
+      {
+        "id": "admin-dashboard",
+        "examples": [
+          "What is on the admin dashboard?",
+          "How do I see today's restaurant activity?",
+          "Where can I view the live overview?",
+          "I want to check current sales and orders."
+        ],
+        "answer": "The Admin dashboard summarizes restaurant activity, including current orders and sales. Open Dashboard from the admin sidebar.",
+        "link": "/admin",
+        "linkLabel": "Open Dashboard"
+      },
+      {
+        "id": "admin-orders-payments",
+        "examples": [
+          "How do I create a new order?",
+          "Where can I manage live orders?",
+          "How do I verify a GCash payment?",
+          "Kailan dapat i-mark as paid ang Maya or QRPH?",
+          "Does cash automatically start an order?",
+          "Where do I compare the payment reference?"
+        ],
+        "answer": "Create and track orders from Live Orders. Cash payments can start the order automatically. For GCash, Maya, or QRPH, verify the customer’s payment reference before marking it paid.",
+        "link": "/admin/orders",
+        "linkLabel": "Open Live Orders"
+      },
+      {
+        "id": "admin-menu",
+        "examples": [
+          "How do I change menu prices?",
+          "Where can I edit menu items?",
+          "How do I mark an item unavailable?",
+          "Where do I manage menu categories?"
+        ],
+        "answer": "Manage menu items, categories, prices, and availability in Menu Management. Changes there are reflected in ordering screens.",
+        "link": "/admin/menu",
+        "linkLabel": "Open Menu Management"
+      },
+      {
+        "id": "admin-settings-payments",
+        "examples": [
+          "How do I configure GCash and Maya?",
+          "Where do I upload the QRPH QR image?",
+          "How do I change the restaurant receipt details?",
+          "Where can I configure VAT?",
+          "Saan inaayos ang payment methods?"
+        ],
+        "answer": "System Settings contains restaurant details, payment methods and QR images, receipt configuration, VAT, and other POS options.",
+        "link": "/admin/settings",
+        "linkLabel": "Open Settings"
+      },
+      {
+        "id": "admin-promotions",
+        "examples": [
+          "How do I configure a promotion?",
+          "Where can I set up discounts?",
+          "How do I enable senior or PWD discounts?",
+          "How do I add a promo for checkout?"
+        ],
+        "answer": "Configure promotions and discounts in Discounts & Promos. Active offers can then be selected at checkout when eligible.",
+        "link": "/admin/discounts",
+        "linkLabel": "Open Discounts & Promos"
+      },
+      {
+        "id": "admin-reports",
+        "examples": [
+          "How do I export sales to Excel?",
+          "Where can I see sales analytics?",
+          "How do I download a sales report?",
+          "Can I choose a report date range?"
+        ],
+        "answer": "Sales and Reports & Analytics show completed sales and order activity. Reports can be exported to Excel for the selected period.",
+        "link": "/admin/reports",
+        "linkLabel": "Open Reports & Analytics"
+      },
+      {
+        "id": "admin-forecast",
+        "examples": [
+          "How does the sales forecast work?",
+          "Where do I train the forecast model?",
+          "Can I predict future sales?",
+          "What does the forecast use when there are no sales?",
+          "Do I train in Forecast or Model Training?"
+        ],
+        "answer": "Sales Forecast shows the expected sales for the next 7 days based on recent daily sales. It refreshes using the latest completed sales. Forecasts are less reliable when there is little or no real sales history.",
+        "link": "/admin/sales",
+        "linkLabel": "Open Sales Forecast"
+      },
+      {
+        "id": "admin-loyalty",
+        "examples": [
+          "How do customer points and rewards work?",
+          "Where do I configure redemptions?",
+          "Can I edit a customer account?",
+          "Where is customer management?"
+        ],
+        "answer": "Customer Management is for viewing customer and loyalty activity. Customers manage their own account details; reward options and point redemption rules are configured by the admin.",
+        "link": "/admin/loyalty",
+        "linkLabel": "Open Customer Management"
+      },
+      {
+        "id": "admin-payroll",
+        "examples": [
+          "What are the payroll cutoffs?",
+          "When is payday for the 1st to 15th?",
+          "When do I pay the 16th to month end cutoff?",
+          "Can a closed payroll be deleted?"
+        ],
+        "answer": "Payroll uses these cutoffs: days 1–15 are paid on the 20th, and days 16–month end are paid on the 5th of the next month. Closed payroll periods are locked.",
+        "link": "/admin/payroll",
+        "linkLabel": "Open Payroll"
+      },
+      {
+        "id": "admin-staff",
+        "examples": [
+          "How do I create a cashier account?",
+          "Who can register staff accounts?",
+          "Where do I assign cashier permissions?",
+          "How can I reset a staff login?"
+        ],
+        "answer": "Only an administrator can create staff accounts. Set up the employee first, then assign the Cashier role and login details in Employee Management or Roles & Access.",
+        "link": "/admin/employees",
+        "linkLabel": "Open Employee Management"
+      },
+      {
+        "id": "admin-voids",
+        "examples": [
+          "Where do I review a void request?",
+          "How can I see cancellation logs?",
+          "How do I approve an order void?",
+          "Where can I audit cancelled orders?"
+        ],
+        "answer": "Review void and cancellation requests in Void/Cancellation Logs. Follow the approval record so the order and its payment stay auditable.",
+        "link": "/admin/voids",
+        "linkLabel": "Open Void/Cancellation Logs"
+      }
+    ],
+    "cashier": [
+      {
+        "id": "cashier-dashboard",
+        "examples": [
+          "Where is my cashier dashboard?",
+          "How do I check today's activity?",
+          "Where can I see the store overview?"
+        ],
+        "answer": "Your cashier dashboard gives a quick view of current store activity. Use the sidebar to open it anytime.",
+        "link": "/cashier",
+        "linkLabel": "Open Dashboard"
+      },
+      {
+        "id": "cashier-orders-payments",
+        "examples": [
+          "How do I create a new order?",
+          "Where do I see live orders?",
+          "How do I verify an e-wallet payment reference?",
+          "Kailan ko mamarkahang paid ang GCash?",
+          "Does cash auto start the order?",
+          "Where do I compare the customer's reference number?"
+        ],
+        "answer": "Use Live Orders to create and track orders. Cash can start automatically. For GCash, Maya, or QRPH, compare the customer’s reference with the payment record before marking it paid.",
+        "link": "/cashier/orders",
+        "linkLabel": "Open Live Orders"
+      },
+      {
+        "id": "cashier-reports",
+        "examples": [
+          "Where are cashier sales reports?",
+          "How do I export reports to Excel?",
+          "How can I see sales for a date range?",
+          "Where can I view transaction activity?"
+        ],
+        "answer": "Open Sales for transaction activity or Reports & Analytics for summaries. Choose a date range before exporting a report to Excel.",
+        "link": "/cashier/reports",
+        "linkLabel": "Open Reports & Analytics"
+      },
+      {
+        "id": "cashier-voids",
+        "examples": [
+          "How do I cancel or void an order?",
+          "Where can I review a void request?",
+          "What should I do with a cancellation request?"
+        ],
+        "answer": "Use Void/Cancellation to review requests and follow the approval flow. Keep the reason and payment state accurate before completing a void.",
+        "link": "/cashier/voids",
+        "linkLabel": "Open Void/Cancellation"
+      },
+      {
+        "id": "cashier-reservations",
+        "examples": [
+          "Where do I see reservations?",
+          "How can I confirm a table booking?",
+          "Where can I check a guest reservation?"
+        ],
+        "answer": "View and manage guest bookings in Reservations. Check the requested date, time, party size, and table availability before confirming.",
+        "link": "/cashier/reservations",
+        "linkLabel": "Open Reservations"
+      },
+      {
+        "id": "cashier-menu",
+        "examples": [
+          "Where is menu management?",
+          "Can I change an item's availability?",
+          "How do I update menu details?",
+          "Where can I edit prices?"
+        ],
+        "answer": "Use Menu Management to update menu details available to your role. Changes affect the ordering menu, so verify the item and price before saving.",
+        "link": "/cashier/menu",
+        "linkLabel": "Open Menu Management"
+      },
+      {
+        "id": "cashier-receipt",
+        "examples": [
+          "How do I print a receipt?",
+          "Where can I find the customer's receipt?",
+          "Can cashier print order receipts?"
+        ],
+        "answer": "After payment is recorded, use the order’s receipt action. Printing is handled by staff at the cashier or admin terminal.",
+        "link": "/cashier/orders",
+        "linkLabel": "Open Live Orders"
+      },
+      {
+        "id": "cashier-login",
+        "examples": [
+          "Who creates cashier accounts?",
+          "How do I log out?",
+          "I forgot my cashier password.",
+          "How do I sign out of the cashier page?"
+        ],
+        "answer": "Cashier accounts are created by an administrator. Use the account menu in the sidebar to sign out, and ask the admin to reset access if you cannot log in.",
+        "link": "/cashier",
+        "linkLabel": "Cashier workspace"
+      }
+    ],
+    "customer": [
+      {
+        "id": "customer-greeting-small-talk",
+        "examples": [
+          "Hi",
+          "Hello",
+          "Hey",
+          "Hi there",
+          "Good morning",
+          "Good afternoon",
+          "Good evening",
+          "Pssttt",
+          "Psst",
+          "Uy",
+          "Kamusta?",
+          "Hello po",
+          "Hi chatbot",
+          "Are you there?",
+          "Can we chat?",
+          "What can you help me with?"
+        ],
+        "answer": "Hi! 😊 I’m PRIME’s ordering assistant. I can help you browse the menu, place an order, check payment and order status, or find your rewards. What would you like to do?",
+        "link": "/customer/kiosk",
+        "linkLabel": "Browse the Menu"
+      },
+      {
+        "id": "customer-order-invitation",
+        "examples": [
+          "Order kana",
+          "Oorder na ako",
+          "Let's order",
+          "I want to order now",
+          "Tara order tayo",
+          "Ready na akong umorder",
+          "Can I order now?",
+          "Let's get some food",
+          "I'm hungry",
+          "What should I do to order?",
+          "Pssttt, order kana",
+          "Uy, order na"
+        ],
+        "answer": "Tara, order na! 😊 Open the menu, add what you like to your cart, then choose dine-in or pickup and a payment method. You can start browsing here.",
+        "link": "/customer/kiosk",
+        "linkLabel": "Start an Order"
+      },
+      {
+        "id": "customer-chat-thanks-goodbye",
+        "examples": [
+          "Thanks",
+          "Thank you",
+          "Thanks po",
+          "Salamat",
+          "Salamat po",
+          "That helps",
+          "Bye",
+          "Goodbye",
+          "See you",
+          "Sige bye",
+          "Okay thanks",
+          "You're the best"
+        ],
+        "answer": "You’re welcome! 😊 Message me anytime if you need help with the menu, an order, or your account. Enjoy your meal!",
+        "link": "/customer/kiosk",
+        "linkLabel": "Browse the Menu"
+      },
+      {
+        "id": "customer-ordering",
+        "examples": [
+          "How do I scan a table QR?",
+          "Can I browse the menu before signing in?",
+          "How do I place a dine-in order?",
+          "Paano mag-order gamit ang QR?",
+          "How do I add items to my cart?"
+        ],
+        "answer": "Scan the table QR to open its menu. Add items to your cart, choose dine-in or pickup when available, select a payment method, then place the order. A table QR keeps the table attached to the order.",
+        "link": "/customer/kiosk",
+        "linkLabel": "Open Order Kiosk"
+      },
+      {
+        "id": "customer-payments",
+        "examples": [
+          "How do I pay using GCash?",
+          "Where do I send my payment reference?",
+          "Why is my e-wallet order still pending?",
+          "Do I need to pay cash at the counter?",
+          "Paano i-submit ang QRPH reference?"
+        ],
+        "answer": "For e-wallet or QR payments, finish the payment in your wallet and submit the transaction reference when prompted. Staff verifies the reference before the order is marked paid. Cash is paid at the counter.",
+        "link": "/customer/orders",
+        "linkLabel": "View Order History"
+      },
+      {
+        "id": "customer-order-status",
+        "examples": [
+          "How do I track my order?",
+          "Where is my order history?",
+          "How can I see if my order is preparing?",
+          "Where do I find completed orders?"
+        ],
+        "answer": "Check Order History and choose the status tab to find your order. Open an order to see its details and digital receipt.",
+        "link": "/customer/orders",
+        "linkLabel": "Open Order History"
+      },
+      {
+        "id": "customer-cancel-order",
+        "examples": [
+          "Can I cancel my order?",
+          "How do I request cancellation before preparing?",
+          "Paano mag-request ng cancel?",
+          "Can I cancel an order that is already preparing?"
+        ],
+        "answer": "You can request cancellation while the order has not started preparing. Open the order in Order History and use the cancellation request option if it is available; staff confirms the request.",
+        "link": "/customer/orders",
+        "linkLabel": "Open Order History"
+      },
+      {
+        "id": "customer-receipt",
+        "examples": [
+          "Where can I see my digital receipt?",
+          "How do I open my receipt?",
+          "Can I print from the customer portal?"
+        ],
+        "answer": "Open a completed order in Order History to view its digital receipt. Customer receipts are shown in the app; printing is for cashier or admin staff.",
+        "link": "/customer/orders",
+        "linkLabel": "Open Order History"
+      },
+      {
+        "id": "customer-rewards",
+        "examples": [
+          "How many points do I have?",
+          "How do I redeem my rewards?",
+          "Where can I see available rewards?",
+          "Paano mag-redeem ng points?"
+        ],
+        "answer": "Points & Rewards shows your points balance and the rewards configured by the restaurant. Choose an available reward to see its point cost and redemption requirements.",
+        "link": "/customer/rewards",
+        "linkLabel": "Open Points & Rewards"
+      },
+      {
+        "id": "customer-account",
+        "examples": [
+          "How do I change my profile?",
+          "Where can I update my phone number?",
+          "How do I manage my customer account?",
+          "I forgot my account password."
+        ],
+        "answer": "Manage your customer profile from Account. If you cannot access your account, use the sign-in recovery options or contact restaurant staff.",
+        "link": "/customer/account",
+        "linkLabel": "Open Account"
+      }
+    ]
+  },
+  "shared": [
+    {
+      "id": "menu-current-list",
+      "examples": [
+        "What is on the menu?",
+        "Show me the menu items",
+        "What food do you sell?",
+        "Ano ang menu?",
+        "Anong pagkain ang available?",
+        "List the dishes and prices"
+      ],
+      "answer": "The menu currently lists PRIME Litson Manok (PRIME) under Ulam for ₱390, and White Rice (Denorado Rice) under Rice for ₱30. Both are shown as available. Please check the live menu for the latest availability.",
+      "link": "/customer/kiosk",
+      "linkLabel": "Browse the Menu"
+    },
+    {
+      "id": "menu-PRIME-details",
+      "examples": [
+        "How much is PRIME?",
+        "Tell me about PRIME Litson Manok",
+        "What is PRIME?",
+        "Is PRIME available?",
+        "Magkano ang litson manok?",
+        "What category is PRIME in?"
+      ],
+      "answer": "PRIME is PRIME Litson Manok, listed under Ulam for ₱390 and shown as available. For the latest availability, please check the live menu. I don’t have verified recipe or ingredient details for this item.",
+      "link": "/customer/kiosk",
+      "linkLabel": "Browse the Menu"
+    },
+    {
+      "id": "menu-rice-details",
+      "examples": [
+        "How much is white rice?",
+        "Tell me about Denorado Rice",
+        "Is rice on the menu?",
+        "What kind of rice do you serve?",
+        "Magkano ang kanin?",
+        "What category is White Rice in?"
+      ],
+      "answer": "White Rice is described as Denorado Rice, listed under Rice for ₱30 and shown as available. For the latest availability, please check the live menu. I don’t have verified recipe or ingredient details for this item.",
+      "link": "/customer/kiosk",
+      "linkLabel": "Browse the Menu"
+    },
+    {
+      "id": "recipe-data-availability",
+      "examples": [
+        "What is the recipe for PRIME?",
+        "What ingredients are in the menu items?",
+        "How do I cook the litson manok?",
+        "Show the recipe database",
+        "May recipe ba sa system?",
+        "Anong ingredients ng PRIME?",
+        "How are menu recipes stored?"
+      ],
+      "answer": "I don’t have verified recipe or ingredient details for the menu items yet. Please ask restaurant staff for accurate preparation and ingredient information.",
+      "link": "/admin/menu",
+      "linkLabel": "Open Menu Management"
+    }
+  ]
+}

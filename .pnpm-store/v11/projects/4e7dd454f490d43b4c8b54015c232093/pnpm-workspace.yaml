@@ -1,0 +1,4 @@
+allowBuilds:
+  unrs-resolver: set this to true or false
+minimumReleaseAgeExclude:
+  - expo-location@57.0.22

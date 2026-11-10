@@ -6,14 +6,24 @@ import { hasAdministratorAccount } from "@/lib/staff-auth/admin-bootstrap"
 import { getStaffSession } from "@/lib/staff-auth/session"
 
 export default async function AdminLoginPage() {
-  const staff = await getStaffSession()
+  let staff: Awaited<ReturnType<typeof getStaffSession>> = null
+  try {
+    staff = await getStaffSession()
+  } catch (error) {
+    console.error("Unable to check the admin login session:", error)
+  }
   if (
     staff &&
     /^(admin|administrator)$/i.test(staff.roleName.trim()) &&
     staff.permissionCodes.includes("employees:manage")
   )
     redirect("/admin")
-  const administratorExists = await hasAdministratorAccount()
+  let administratorExists: boolean | null = null
+  try {
+    administratorExists = await hasAdministratorAccount()
+  } catch (error) {
+    console.error("Unable to check for an administrator account:", error)
+  }
 
   return (
     <AuthSplitLayout
@@ -23,7 +33,7 @@ export default async function AdminLoginPage() {
       description="Manage restaurant operations from your PRIME POS workspace."
     >
       <StaffLoginForm action={loginAdmin} portal="Admin" />
-      {!administratorExists ? (
+      {administratorExists === false ? (
         <p className="mt-4 text-center text-sm text-muted-foreground">
           First time setup?{" "}
           <a

@@ -1,5 +1,4 @@
 import { redirect } from "next/navigation"
-import Image from "next/image"
 import {
   fraunces,
   manrope,
@@ -26,6 +25,7 @@ import {
   GraduationCap,
   ScanLine,
   Sparkles,
+  ReceiptText,
 } from "lucide-react"
 
 export default async function PrimeLanding({
@@ -164,45 +164,39 @@ export default async function PrimeLanding({
                 className="hero-glow absolute inset-[17%] rounded-full bg-cyan-300/10 blur-3xl"
               />
 
-              <div className="hero-float absolute top-[9%] left-[13%] z-10 w-[70%] overflow-hidden rounded-[2rem] border border-white/15 bg-slate-900/80 p-2 shadow-[0_35px_100px_#0009] backdrop-blur-xl sm:top-[7%] sm:left-[17%]">
-                <div className="relative aspect-[1.08] overflow-hidden rounded-[1.45rem] bg-[#f53222]">
-                  <Image
-                    src="/primelogo.jpg"
-                    alt="PRIME Litson Manok at Tsibugan brand"
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 70vw, 420px"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/80 to-transparent px-4 pt-12 pb-4 text-white">
+              <div className="hero-float absolute top-[7%] left-1/2 z-10 w-[76%] max-w-[25rem] -translate-x-1/2 rotate-[-3deg] overflow-hidden rounded-[1.75rem] border border-white/15 bg-slate-900/90 p-2 shadow-[0_35px_100px_#0009] backdrop-blur-xl">
+                <div className="rounded-[1.25rem] bg-[#fbfaf6] px-6 py-6 text-slate-900 sm:px-8 sm:py-7">
+                  <div className="flex items-center justify-between border-b border-dashed border-slate-300 pb-4">
                     <div>
-                      <p className="text-[10px] tracking-[0.2em] text-cyan-200 uppercase">
-                        Featured restaurant
-                      </p>
-                      <p className="mt-1 text-sm font-semibold">
-                        PRIME Litson Manok
-                      </p>
+                      <p className="text-[10px] font-bold tracking-[0.24em] text-amber-700 uppercase">PRIME · DIGITAL RECEIPT</p>
+                      <p className="mt-1 text-lg font-bold">Order complete</p>
                     </div>
-                    <span className="grid size-9 place-items-center rounded-full border border-white/30 bg-black/25 backdrop-blur">
-                      <ScanLine className="size-4" />
+                    <span className="grid size-10 place-items-center rounded-full bg-emerald-100 text-emerald-700">
+                      <Check className="size-5" />
                     </span>
+                  </div>
+                  <div className="mt-5 flex items-center justify-between text-xs text-slate-500">
+                    <span>ORDER #PM-2048</span><span>TABLE 08</span>
+                  </div>
+                  <div className="mt-4 space-y-3 text-sm">
+                    <div className="flex justify-between gap-4"><span>Signature Litson Manok <span className="text-slate-400">× 1</span></span><span>₱420</span></div>
+                    <div className="flex justify-between gap-4"><span>Garlic rice <span className="text-slate-400">× 2</span></span><span>₱80</span></div>
+                    <div className="flex justify-between gap-4"><span>Iced calamansi <span className="text-slate-400">× 2</span></span><span>₱120</span></div>
+                  </div>
+                  <div className="mt-5 flex justify-between border-t border-dashed border-slate-300 pt-4 text-sm text-slate-500"><span>Total paid</span><span className="font-semibold text-slate-900">₱620.00</span></div>
+                  <div className="mt-5 flex items-center justify-center gap-2 rounded-xl bg-emerald-50 py-2.5 text-xs font-semibold text-emerald-700">
+                    <ReceiptText className="size-4" /> Saved to your digital receipts
                   </div>
                 </div>
               </div>
 
-              
-
-              <div className="hero-float absolute bottom-[16%] left-[2%] z-20 flex items-center gap-3 rounded-2xl border border-white/15 bg-slate-900/90 px-3 py-2.5 shadow-xl backdrop-blur-xl sm:left-[3%]">
+              <div className="hero-float absolute bottom-[14%] left-[2%] z-20 flex items-center gap-3 rounded-2xl border border-white/15 bg-slate-900/90 px-3 py-2.5 shadow-xl backdrop-blur-xl sm:left-[3%]">
                 <span className="grid size-9 place-items-center rounded-xl bg-gradient-to-br from-cyan-200 to-blue-400 text-slate-950">
-                  <ScanLine className="size-4" />
+                  <ReceiptText className="size-4" />
                 </span>
                 <div>
-                  <p className="text-[9px] tracking-[0.16em] text-slate-400 uppercase">
-                    Scan to begin
-                  </p>
-                  <p className="mt-0.5 text-xs font-semibold text-white">
-                    Your table. Your menu.
-                  </p>
+                  <p className="text-[9px] tracking-[0.16em] text-slate-400 uppercase">Paperless checkout</p>
+                  <p className="mt-0.5 text-xs font-semibold text-white">Your receipt, always handy.</p>
                 </div>
               </div>
               <div
@@ -380,7 +374,7 @@ export default async function PrimeLanding({
         </h2>
         <Accordion
           type="single"
-          className="max-w-3xl rounded-2xl border border-white/10 bg-white/[0.02] px-5"
+          className="w-full max-w-none rounded-2xl border border-white/10 bg-white/[0.02] px-5"
         >
           {faqs.map((item, i) => (
             <AccordionItem

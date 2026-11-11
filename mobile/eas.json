@@ -1,0 +1,12 @@
+{
+  "build": {
+    "preview": {
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://caps-eosin-one.vercel.app"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    }
+  }
+}

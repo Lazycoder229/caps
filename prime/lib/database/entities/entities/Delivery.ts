@@ -7,7 +7,7 @@ import {
   PrimaryColumn,
   type Relation,
 } from "typeorm"
-import type { Order } from "./Order"
+import { Order } from "./Order"
 import { decimal } from "./transformers"
 
 export const DELIVERY_STATUS = [
@@ -67,7 +67,10 @@ export class Delivery {
   @Column({ name: "updated_at", type: "timestamp", nullable: true })
   updatedAt!: Date | null
 
-  @OneToOne("Order", "delivery", { onDelete: "CASCADE", onUpdate: "CASCADE" })
+  @OneToOne(() => Order, (order) => order.delivery, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
   @JoinColumn({ name: "order_id" })
   order!: Relation<Order>
 }

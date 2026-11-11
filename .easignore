@@ -1,0 +1,6 @@
+.pnpm-store/
+mobile/node_modules/
+mobile/.expo/
+mobile/dist/
+prime/node_modules/
+prime/.next/
